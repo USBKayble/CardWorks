@@ -6,10 +6,13 @@ A port of the Numworks calculator system to the M5 Stack Cardputer, providing a 
 
 - **Scientific Calculator**: Full support for advanced mathematical operations
 - **Basic Arithmetic**: Addition, subtraction, multiplication, division, exponentiation
-- **Trigonometric Functions**: sin, cos, tan
+- **Trigonometric Functions**: sin, cos, tan, asin, acos, atan
 - **Logarithmic Functions**: ln (natural log), log (base 10)
 - **Mathematical Functions**: Square root, absolute value
+- **Mathematical Constants**: π (pi), e (Euler's number)
 - **Expression Evaluation**: Support for complex expressions with parentheses
+- **Memory Functions**: Store, recall, clear, and add to memory
+- **Physical Button Support**: ESC, DEL, Enter, TAB, Shift, Fn, arrow keys
 - **Real-time Display**: Shows both expression and result
 - **Error Handling**: Clear error messages for invalid operations
 
@@ -49,6 +52,17 @@ A port of the Numworks calculator system to the M5 Stack Cardputer, providing a 
 
 ### Key Mappings
 
+#### Physical Buttons
+
+| Button | Function | Description |
+|--------|----------|-------------|
+| ESC | Clear All (AC) | Clear everything and start over |
+| DEL | Backspace | Delete last character |
+| Enter/OK | Calculate | Evaluate the expression |
+| TAB | Insert π | Insert pi constant (3.14159...) |
+
+#### Number and Basic Operators
+
 | Key | Function |
 |-----|----------|
 | 0-9 | Enter digits |
@@ -56,14 +70,35 @@ A port of the Numworks calculator system to the M5 Stack Cardputer, providing a 
 | ^ | Exponentiation |
 | . | Decimal point |
 | (, ) | Parentheses |
-| Enter/Return | Calculate result |
-| \` (backtick) | Clear all (AC) |
-| ; (semicolon) | Backspace/Delete |
-| q | Square root √ |
-| s | Sine (sin) |
-| c | Cosine (cos) |
-| t | Tangent (tan) |
-| l | Natural logarithm (ln) |
+
+#### Function Keys (Letters)
+
+| Key | Function | With Shift |
+|-----|----------|------------|
+| Q | √ (Square root) | - |
+| S | sin (Sine) | asin (Arcsine) |
+| C | cos (Cosine) | acos (Arccosine) |
+| T | tan (Tangent) | atan (Arctangent) |
+| L | ln (Natural log) | log (Log base 10) |
+| A | abs (Absolute value) | - |
+| E | - | Insert e constant |
+| P | - | Insert π constant |
+
+#### Arrow Keys (with Fn modifier)
+
+| Key Combo | Function |
+|-----------|----------|
+| Fn + , | Left arrow (Backspace) |
+| Fn + . | Right arrow (reserved) |
+| Fn + ; | Up arrow (Memory Recall) |
+| Fn + / | Down arrow (Memory Store) |
+
+#### Alternative Keys
+
+| Key | Function |
+|-----|----------|
+| ` (backtick) | Clear all (alternative to ESC) |
+| ; (semicolon) | Backspace (alternative to DEL) |
 
 ### Examples
 

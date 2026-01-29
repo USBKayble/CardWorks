@@ -13,13 +13,20 @@
  * - Numbers (0-9): Enter digits
  * - Operators (+, -, *, /, ^): Mathematical operations
  * - Enter/Return: Calculate result
- * - ` (backtick): Clear (AC)
- * - ; (semicolon): Backspace (DEL)
+ * - ESC: Clear all (AC)
+ * - DEL: Backspace/Delete
+ * - TAB: Insert π (pi)
+ * - Shift+P: Insert π (pi)
+ * - Shift+E: Insert e (Euler's number)
  * - q: Square root
- * - s: Sine
- * - c: Cosine
- * - t: Tangent
- * - l: Natural logarithm (ln)
+ * - s: Sine / Shift+S: Arcsine
+ * - c: Cosine / Shift+C: Arccosine
+ * - t: Tangent / Shift+T: Arctangent
+ * - l: Natural logarithm / Shift+L: Log base 10
+ * - a: Absolute value
+ * - Fn+; (up arrow): Memory recall
+ * - Fn+/ (down arrow): Memory store
+ * - Fn+, (left arrow): Backspace
  * - ., (, ): Decimal point and parentheses
  * 
  * Based on the Numworks calculator open-source project.
@@ -30,7 +37,7 @@
 #include "CalculatorUI.h"
 
 Calculator calculator;
-CalculatorUI* ui;
+CalculatorUI ui(&calculator);
 
 void setup() {
     // Initialize Serial for debugging
@@ -42,14 +49,13 @@ void setup() {
     calculator.setMode(MODE_SCIENTIFIC);
     
     // Initialize UI
-    ui = new CalculatorUI(&calculator);
-    ui->begin();
+    ui.begin();
     
     Serial.println("Initialization complete!");
     Serial.println("Ready to calculate!");
 }
 
 void loop() {
-    ui->update();
+    ui.update();
     delay(10); // Small delay to prevent excessive updates
 }

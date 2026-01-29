@@ -30,7 +30,7 @@
 #include "CalculatorUI.h"
 
 Calculator calculator;
-CalculatorUI* ui;
+CalculatorUI ui(&calculator);
 
 void setup() {
     // Initialize Serial for debugging
@@ -42,14 +42,13 @@ void setup() {
     calculator.setMode(MODE_SCIENTIFIC);
     
     // Initialize UI
-    ui = new CalculatorUI(&calculator);
-    ui->begin();
+    ui.begin();
     
     Serial.println("Initialization complete!");
     Serial.println("Ready to calculate!");
 }
 
 void loop() {
-    ui->update();
+    ui.update();
     delay(10); // Small delay to prevent excessive updates
 }

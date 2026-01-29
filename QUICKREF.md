@@ -1,24 +1,50 @@
 # CardWorks Quick Reference
 
+## Physical Buttons
+
+The M5 Stack Cardputer has several physical buttons that are optimized for calculator use:
+
+| Button | Function | Description |
+|--------|----------|-------------|
+| **ESC** | Clear All (AC) | Clears everything, start fresh |
+| **DEL** | Backspace | Delete last character |
+| **Enter** | Calculate (=) | Evaluate expression and show result |
+| **TAB** | Insert π | Insert pi constant (3.14159...) |
+| **Shift** | Modifier | Access advanced functions |
+| **Fn** | Function Modifier | Access arrow keys and memory |
+
 ## Keyboard Layout
 
 ```
-┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-│  `  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │
-│ AC  │     │     │     │     │     │     │     │     │     │     │     │     │
-├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┘
-│   Q    │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  (  │  )  │
-│  √     │     │     │     │ tan │     │     │     │     │     │     │     │
-├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴──┐
-│    A     │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  '  │Enter │
-│          │ sin │     │     │     │     │     │     │ ln  │ DEL │     │  =   │
-├──────────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──────┤
-│      Z      │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  Shift  │
-│             │     │ cos │     │     │     │     │     │     │  ÷  │         │
-└─────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────────┘
+┌──────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
+│  `   │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │
+│      │     │     │     │     │     │Sh:^ │     │     │     │     │     │     │
+├──────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┘
+│    Q    │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  (  │  )  │
+│   √     │     │Sh:e │     │ tan │     │     │     │     │Sh:π │     │     │
+│         │     │     │     │Sh:  │     │     │     │     │     │     │     │
+│         │     │     │     │atan │     │     │     │     │     │     │     │
+├─────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴──┐
+│     A     │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  '  │Enter │
+│    abs    │ sin │     │     │     │     │     │     │  ln │Fn:↑ │     │  =   │
+│           │Sh:  │     │     │     │     │     │     │Sh:  │     │     │      │
+│           │asin │     │     │     │     │     │     │ log │     │     │      │
+├───────────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──────┤
+│      Z       │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  Shift  │
+│              │     │ cos │     │     │     │     │Fn:← │Fn:→ │Fn:↓ │         │
+│              │     │Sh:  │     │     │     │     │     │     │     │         │
+│              │     │acos │     │     │     │     │     │     │     │         │
+└──────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────────┘
 ```
 
+Legend:
+- **Sh:** = Shift key modifier
+- **Fn:** = Function key modifier  
+- **↑↓←→** = Arrow key functions
+
 ## Function Keys
+
+### Basic Functions
 
 | Key | Function | Usage |
 |-----|----------|-------|
@@ -27,6 +53,19 @@
 | C | cos (Cosine) | `c0` → `cos(0)` = 1 |
 | T | tan (Tangent) | `t0` → `tan(0)` = 0 |
 | L | ln (Natural Log) | `l2.71828` → `ln(e)` = 1 |
+| A | abs (Absolute Value) | `a-5` → `abs(-5)` = 5 |
+
+### Advanced Functions (with Shift)
+
+| Key Combo | Function | Usage |
+|-----------|----------|-------|
+| Shift+S | asin (Arcsine) | `Shift+s0.5` → `asin(0.5)` |
+| Shift+C | acos (Arccosine) | `Shift+c0.5` → `acos(0.5)` |
+| Shift+T | atan (Arctangent) | `Shift+t1` → `atan(1)` = π/4 |
+| Shift+L | log (Log base 10) | `Shift+l100` → `log(100)` = 2 |
+| Shift+E | Insert e | Inserts Euler's number (2.71828...) |
+| Shift+P | Insert π | Inserts pi (3.14159...) |
+| Shift+6 | ^ (Power) | Alternative to ^ key |
 
 ## Operators
 
@@ -43,11 +82,30 @@
 
 ## Special Keys
 
+### Primary Controls
+
+| Key/Button | Function | Description |
+|------------|----------|-------------|
+| ESC | AC (All Clear) | Clear everything |
+| DEL | Backspace | Delete last character |
+| Enter | Calculate | Evaluate expression |
+| TAB | Insert π | Insert pi constant |
+
+### Alternative Controls
+
 | Key | Function | Description |
 |-----|----------|-------------|
-| ` | AC (All Clear) | Clear everything |
-| ; | DEL (Delete) | Backspace one character |
-| Enter | Calculate | Evaluate expression |
+| ` (backtick) | AC (All Clear) | Alternative to ESC |
+| ; (semicolon) | Backspace | Alternative to DEL (when not using Fn) |
+
+### Arrow Keys (with Fn modifier)
+
+| Key Combo | Function | Description |
+|-----------|----------|-------------|
+| Fn+, | ← Left Arrow | Backspace |
+| Fn+. | → Right Arrow | Reserved for future use |
+| Fn+; | ↑ Up Arrow | Memory Recall (MR) |
+| Fn+/ | ↓ Down Arrow | Memory Store (MS) |
 
 ## Order of Operations
 

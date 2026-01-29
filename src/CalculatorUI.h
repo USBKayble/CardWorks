@@ -36,13 +36,10 @@ private:
     
     // Drawing functions
     void drawDisplay();
-    void drawKeyboard();
-    void drawButton(int x, int y, int w, int h, const String& label, uint16_t bgColor);
     void drawStatusBar();
     
     // Input handling
     void handleKeyboard();
-    char currentKey;
 };
 
 #endif

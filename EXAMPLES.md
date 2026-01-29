@@ -115,6 +115,21 @@ Input: t0.7854
 Result: 1
 ```
 
+**Inverse Functions (with Shift):**
+```
+Input: Shift+s0.5
+(Shows: asin(0.5))
+Result: 0.5236 (approximately π/6)
+
+Input: Shift+c0.5
+(Shows: acos(0.5))
+Result: 1.047 (approximately π/3)
+
+Input: Shift+t1
+(Shows: atan(1))
+Result: 0.7854 (approximately π/4)
+```
+
 ### Logarithms
 
 **Natural Logarithm (l):**
@@ -125,6 +140,84 @@ Result: 1
 
 Input: l10
 Result: 2.302585...
+```
+
+**Logarithm Base 10 (Shift+L):**
+```
+Input: Shift+l100
+(Shows: log(100))
+Result: 2
+
+Input: Shift+l1000
+(Shows: log(1000))
+Result: 3
+```
+
+## Using Mathematical Constants
+
+### Pi (π)
+
+**Method 1: TAB key**
+```
+Press TAB
+Display: π
+```
+
+**Method 2: Shift+P**
+```
+Press Shift+P
+Display: π
+```
+
+**Example:**
+```
+Input: TAB*2^2
+(Shows: π*2^2)
+Result: 12.566... (area of circle with radius 2)
+```
+
+### Euler's Number (e)
+
+**Press Shift+E:**
+```
+Press Shift+E
+Display: e
+```
+
+**Example:**
+```
+Input: Shift+e^2
+(Shows: e^2)
+Result: 7.389... (e squared)
+```
+
+## Memory Functions
+
+### Storing Values
+
+**Store to Memory (Fn+/ or down arrow):**
+```
+Step 1: 5*5 [Enter] → 25
+Step 2: Press Fn+/ → Memory stores 25
+```
+
+### Recalling Values
+
+**Recall from Memory (Fn+; or up arrow):**
+```
+Step 1: Press Fn+; → Displays stored value
+Step 2: +10 [Enter] → Adds 10 to recalled value
+```
+
+### Memory Example
+
+```
+Calculate: (5+3) and then multiply by stored value
+Step 1: 100 [Enter]
+Step 2: Press Fn+/ (store 100)
+Step 3: 5+3 [Enter] → 8
+Step 4: * [then] Fn+; → multiplies by 100
+Step 5: [Enter] → 800
 ```
 
 ## Complex Expressions
@@ -183,13 +276,29 @@ Result: 1157.625
 
 ## Keyboard Shortcuts
 
-### Essential Keys
+### Essential Physical Buttons
 
-| Input | Action | Example |
-|-------|--------|---------|
-| ` (backtick) | Clear all (AC) | Clears everything |
-| ; (semicolon) | Delete last character | Remove mistake |
-| Enter/Return | Calculate result | Get answer |
+| Button | Action | Example |
+|--------|--------|---------|
+| ESC | Clear all (AC) | Clears everything |
+| DEL | Delete last character | Remove mistake |
+| Enter | Calculate result | Get answer |
+| TAB | Insert π | Quick pi insertion |
+
+### Modifier Keys
+
+**Shift Key Functions:**
+- Shift+S: Arcsine (asin)
+- Shift+C: Arccosine (acos)  
+- Shift+T: Arctangent (atan)
+- Shift+L: Log base 10
+- Shift+E: Insert e constant
+- Shift+P: Insert π constant
+
+**Fn Key Functions (Arrow Keys):**
+- Fn+, (←): Backspace
+- Fn+; (↑): Memory Recall
+- Fn+/ (↓): Memory Store
 
 ### Number Entry
 
@@ -219,7 +328,29 @@ Result: 30
 
 ## Tips and Tricks
 
-### 1. Chaining Calculations
+### 1. Physical Buttons for Speed
+
+Use the hardware buttons for faster operation:
+- **ESC** for quick clear (faster than backtick)
+- **DEL** for backspace (faster than semicolon)
+- **TAB** for instant π insertion
+- **Enter** button for calculate
+
+### 2. Shift Key for Advanced Functions
+
+Hold Shift while pressing function keys:
+- Shift+S/C/T for inverse trig functions
+- Shift+L for log base 10 instead of ln
+- Shift+E/P for mathematical constants
+
+### 3. Fn Key for Memory and Navigation
+
+Use Fn key combinations:
+- Fn+; (up): Recall stored value
+- Fn+/ (down): Store current result
+- Fn+, (left): Alternative backspace
+
+### 4. Chaining Calculations
 
 After getting a result, you can continue calculating:
 
@@ -229,7 +360,7 @@ Step 2: +10 = 20
 Step 3: *2 = 40
 ```
 
-### 2. Using Parentheses
+### 5. Using Parentheses
 
 Always use parentheses for clarity:
 
@@ -238,7 +369,7 @@ Good: (2+3)*(4+5)
 Bad: 2+3*4+5  (might be confusing)
 ```
 
-### 3. Scientific Notation
+### 6. Scientific Notation
 
 Very large or very small numbers display in scientific notation:
 
@@ -250,7 +381,7 @@ Input: 10^-6
 Result: 1.0e-6  (0.000001)
 ```
 
-### 4. Function Composition
+### 7. Function Composition
 
 You can nest functions:
 
@@ -260,12 +391,21 @@ Input: qs16
 Result: (calculated value)
 ```
 
-### 5. Quick Clear
+### 8. Quick Constants
 
-Use backtick (`) to quickly clear and start over:
-- Clears all input
-- Resets to 0
-- Clears any errors
+- Press TAB for π anytime
+- Press Shift+E for e anytime
+- No need to type out long decimal values
+
+### 9. Memory for Complex Calculations
+
+Store intermediate results:
+```
+1. Calculate part 1, press Fn+/ to store
+2. Calculate part 2
+3. Press Fn+; to recall part 1
+4. Combine them
+```
 
 ## Error Handling
 

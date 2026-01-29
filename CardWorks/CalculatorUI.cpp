@@ -4,7 +4,6 @@ CalculatorUI::CalculatorUI(Calculator* calc) {
     calculator = calc;
     needsRedraw = true;
     lastDisplay = "";
-    currentKey = 0;
 }
 
 void CalculatorUI::begin() {
@@ -102,9 +101,9 @@ void CalculatorUI::drawStatusBar() {
             break;
     }
     
-    // Draw help text
-    M5Cardputer.Display.setCursor(180, 3);
-    M5Cardputer.Display.print("AC:DEL");
+    // Draw help text - showing physical button hints
+    M5Cardputer.Display.setCursor(150, 3);
+    M5Cardputer.Display.print("ESC=AC TAB=π");
 }
 
 void CalculatorUI::handleKeyboard() {
@@ -112,44 +111,144 @@ void CalculatorUI::handleKeyboard() {
         if (M5Cardputer.Keyboard.isPressed()) {
             Keyboard_Class::KeysState status = M5Cardputer.Keyboard.keysState();
             
+            // Handle physical delete/backspace button
+            if (status.del) {
+                calculator->backspace();
+                needsRedraw = true;
+                return;
+            }
+            
+            // Handle Enter/OK button
+            if (status.enter) {
+                calculator->calculate();
+                needsRedraw = true;
+                return;
+            }
+            
+            // Handle Tab (could be used for mode switching or constants)
+            if (status.tab) {
+                // Insert π constant
+                calculator->input('π');
+                needsRedraw = true;
+                return;
+            }
+            
+            // Handle Esc (clear all)
+            if (status.esc) {
+                calculator->clear();
+                needsRedraw = true;
+                return;
+            }
+            
+            // Handle modifier keys for advanced functions
+            bool shiftPressed = status.shift;
+            bool fnPressed = status.fn;
+            
             // Handle special keys
             for (auto key : status.word) {
+                // Clear with backtick (in addition to ESC)
                 if (key == '`') {
                     calculator->clear();
                     needsRedraw = true;
                 }
-                else if (key == ';') {
+                // Backspace with semicolon (in addition to physical DEL)
+                else if (key == ';' && !fnPressed) {
                     calculator->backspace();
                     needsRedraw = true;
                 }
+                // Enter/Calculate
                 else if (key == '\n' || key == '=') {
                     calculator->calculate();
                     needsRedraw = true;
                 }
-                else if (key == 'q' || key == 'Q') {
+                // Arrow keys functionality (when Fn is pressed with , . / ;)
+                else if (fnPressed && key == ',') {
+                    // Left arrow - backspace
+                    calculator->backspace();
+                    needsRedraw = true;
+                }
+                else if (fnPressed && key == '.') {
+                    // Right arrow - could be used for cursor movement (not implemented yet)
+                    // For now, do nothing
+                }
+                else if (fnPressed && key == ';') {
+                    // Up arrow - memory recall
+                    calculator->memoryRecall();
+                    needsRedraw = true;
+                }
+                else if (fnPressed && key == '/') {
+                    // Down arrow - memory store
+                    calculator->memoryStore();
+                    needsRedraw = true;
+                }
+                // Scientific functions with Shift
+                else if (shiftPressed && (key == 's' || key == 'S')) {
+                    // Shift+S: arcsin (asin)
+                    calculator->inputFunction("asin");
+                    needsRedraw = true;
+                }
+                else if (shiftPressed && (key == 'c' || key == 'C')) {
+                    // Shift+C: arccos (acos)
+                    calculator->inputFunction("acos");
+                    needsRedraw = true;
+                }
+                else if (shiftPressed && (key == 't' || key == 'T')) {
+                    // Shift+T: arctan (atan)
+                    calculator->inputFunction("atan");
+                    needsRedraw = true;
+                }
+                else if (shiftPressed && (key == 'l' || key == 'L')) {
+                    // Shift+L: log base 10
+                    calculator->inputFunction("log");
+                    needsRedraw = true;
+                }
+                else if (shiftPressed && (key == 'e' || key == 'E')) {
+                    // Shift+E: insert e constant
+                    calculator->input('e');
+                    needsRedraw = true;
+                }
+                else if (shiftPressed && (key == 'p' || key == 'P')) {
+                    // Shift+P: insert π constant
+                    calculator->input('π');
+                    needsRedraw = true;
+                }
+                else if (shiftPressed && key == '6') {
+                    // Shift+6: ^ (exponentiation)
+                    calculator->input('^');
+                    needsRedraw = true;
+                }
+                // Regular function keys (without shift)
+                else if (!shiftPressed && (key == 'q' || key == 'Q')) {
                     calculator->inputFunction("sqrt");
                     needsRedraw = true;
                 }
-                else if (key == 's' || key == 'S') {
+                else if (!shiftPressed && (key == 's' || key == 'S')) {
                     calculator->inputFunction("sin");
                     needsRedraw = true;
                 }
-                else if (key == 'c' || key == 'C') {
+                else if (!shiftPressed && (key == 'c' || key == 'C')) {
                     calculator->inputFunction("cos");
                     needsRedraw = true;
                 }
-                else if (key == 't' || key == 'T') {
+                else if (!shiftPressed && (key == 't' || key == 'T')) {
                     calculator->inputFunction("tan");
                     needsRedraw = true;
                 }
-                else if (key == 'l' || key == 'L') {
+                else if (!shiftPressed && (key == 'l' || key == 'L')) {
                     calculator->inputFunction("ln");
                     needsRedraw = true;
                 }
+                else if (!shiftPressed && (key == 'a' || key == 'A')) {
+                    // A: absolute value
+                    calculator->inputFunction("abs");
+                    needsRedraw = true;
+                }
+                // Numbers
                 else if (key >= '0' && key <= '9') {
                     calculator->input(key);
                     needsRedraw = true;
                 }
+                // Operators
                 else if (key == '+' || key == '-' || key == '*' || key == '/' || 
                          key == '.' || key == '(' || key == ')' || key == '^') {
                     calculator->input(key);
