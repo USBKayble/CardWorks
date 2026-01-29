@@ -10,6 +10,7 @@
 *.bin
 *.elf
 *.map
+CardWorks/main.cpp
 
 # Build artifacts
 build/
